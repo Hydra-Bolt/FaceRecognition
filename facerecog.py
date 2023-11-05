@@ -25,9 +25,9 @@ def check_face(frame):
         for face_angle in face_angles:
             # print(f"./faces/{name}/{face_angle}")
             reference_img = cv2.imread(f"./faces/{name}/{face_angle}")
-            result  = DeepFace.verify(frame, reference_img.copy())
+            result  = DeepFace.verify(frame, reference_img.copy(), )
             try:
-                if result["verified"]:
+                if result["verified"] and result["distance"]<.3:
                     face_match = True
                     matched_name = name
                     confidence = result["distance"]
@@ -61,7 +61,7 @@ while True:
         for (x, y, w, h) in faces:
             # print(matched_name)
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-            cv2.putText(frame, matched_name if matched_name else "Not Recognized" + ":" + str(confidence), (x, y + h + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+            cv2.putText(frame, matched_name + ":" + str(1-confidence) if matched_name else "Not Recognized" , (x, y + h + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
         cv2.imshow("video", frame)
 

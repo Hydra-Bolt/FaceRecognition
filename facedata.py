@@ -61,7 +61,7 @@ def submit_name():
 # Create the GUI window
 window = tk.Tk()
 window.title("Face Image Capture")
-window.geometry(800,800)
+# window.geometry(800,800)
 # Create and place GUI elements
 name_label = tk.Label(window, text="Enter your name:")
 name_label.pack()
