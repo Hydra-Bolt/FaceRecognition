@@ -1,5 +1,3 @@
-Certainly! Below is a simple `README.md` template for your FaceRecognition GitHub repository:
-
 
 # FaceRecognition
 
